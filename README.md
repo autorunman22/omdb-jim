@@ -1,4 +1,5 @@
 # omdb-jim
+*(3/34) completed*
 ## Task Details:
 - [ ] Create an Android App showcasing the OMDb API s
 - [ ] Applicant is expected to read the aforementioned API docs
