@@ -9,10 +9,10 @@
 - [ ] Failure to read, understand, and follow the instructions defaults the applicant 
 
 ## Compulsory tech stack to be used:
-- [ ] Android Studio
-- [ ] Kotlin
+- [x] Android Studio
+- [x] Kotlin
 - [ ] MVVM design pattern
-- [ ] Koin for dependency injection
+- [ ] Koin for dependency injection (Android Hilt as substitute)
 - [ ] Coil for image loading
 - [ ] Android X artefacts
 - [ ] Room database
@@ -25,7 +25,7 @@
 - [ ] ProGuard should be enabled & code minified 
 
 ## Mandatory Requirements:
-- [ ] Minimum Android version to support is Marshmallow
+- [x] Minimum Android version to support is Marshmallow
 - [ ] Display a paginated home feed of movie cards
 - [ ] Implement infinite scrolling with a limit of 10 movies per page
 - [ ] Implement swipe to refresh the home feed
