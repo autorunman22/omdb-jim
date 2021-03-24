@@ -1,28 +1,28 @@
 # omdb-jim
-*(3/34) completed*
+*(19/34) completed*
 ## Task Details:
-- [ ] Create an Android App showcasing the OMDb API s
-- [ ] Applicant is expected to read the aforementioned API docs
-- [ ] Time limit is 1 week upon receipt of exam
-- [ ] Applicant can submit whatever’s finished within the allotted time
+- [x] Create an Android App showcasing the OMDb API s
+- [x] Applicant is expected to read the aforementioned API docs
+- [x] Time limit is 1 week upon receipt of exam
+- [x] Applicant can submit whatever’s finished within the allotted time
 - [ ] Finish & submit the source code along with an APK within the allotted time
-- [ ] UI/UX & assets are up to you
-- [ ] Failure to read, understand, and follow the instructions defaults the applicant 
+- [x] UI/UX & assets are up to you
+- [x] Failure to read, understand, and follow the instructions defaults the applicant 
 
 ## Compulsory tech stack to be used:
 - [x] Android Studio
 - [x] Kotlin
-- [ ] MVVM design pattern
-- [ ] Koin for dependency injection (Android Hilt as substitute)
-- [ ] Coil for image loading
-- [ ] Android X artefacts
-- [ ] Room database
-- [ ] Material.io components
-- [ ] Kotlin Coroutines
-- [ ] Android Navigation Component
+- [x] MVVM design pattern
+- [x] Koin for dependency injection (Android Hilt as substitute)
+- [x] Coil for image loading
+- [x] Android X artefacts
+- [x] Room database
+- [x] Material.io components
+- [x] Kotlin Coroutines
+- [x] Android Navigation Component
 - [ ] Lottie for animations
-- [ ] Retrofit for API calls
-- [ ] Gson for serializing/deserializing
+- [x] Retrofit for API calls
+- [x] Gson for serializing/deserializing
 - [ ] ProGuard should be enabled & code minified 
 
 ## Mandatory Requirements:
