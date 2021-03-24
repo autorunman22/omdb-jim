@@ -8,9 +8,13 @@ import androidx.room.PrimaryKey
 class MovieCache(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "imdbId")
-    val imdbID: String,
+    val imdbId: String,
     @ColumnInfo(name = "title")
     val title: String,
     @ColumnInfo(name = "year")
     val year: String,
+    @ColumnInfo(name = "poster_url")
+    val posterUrl: String,
+    @ColumnInfo(name = "type")
+    val type: String,
 )

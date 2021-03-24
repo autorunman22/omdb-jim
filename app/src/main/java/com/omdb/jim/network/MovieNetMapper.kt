@@ -1,11 +1,11 @@
-package com.omdb.jim.db
+package com.omdb.jim.network
 
 import com.omdb.jim.model.Movie
 import javax.inject.Inject
 
-class MovieCacheMapper @Inject constructor() {
+class MovieNetMapper @Inject constructor() {
 
-    fun mapFromEntity(cache: MovieCache): Movie {
+    fun mapFromEntity(cache: MovieNetwork): Movie {
         return Movie(
             imdbId = cache.imdbId,
             title = cache.title,
@@ -15,8 +15,8 @@ class MovieCacheMapper @Inject constructor() {
         )
     }
 
-    fun mapToEntity(model: Movie): MovieCache {
-        return MovieCache(
+    fun mapToEntity(model: Movie): MovieNetwork {
+        return MovieNetwork(
             imdbId = model.imdbId,
             title = model.title,
             year = model.year,
