@@ -33,6 +33,10 @@ android {
         it.buildConfigField "String", "OMDB_API_KEY", "\"c2b96094\""
     }
 
+    buildFeatures {
+        dataBinding true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -105,4 +109,7 @@ dependencies {
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Coil image loader
+    implementation "io.coil-kt:coil:1.1.1"
 }
