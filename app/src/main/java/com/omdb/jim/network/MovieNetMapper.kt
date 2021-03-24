@@ -24,4 +24,8 @@ class MovieNetMapper @Inject constructor() {
             type = model.type,
         )
     }
+
+    fun mapFromEntityList(movieNetworks: List<MovieNetwork>): List<Movie> = movieNetworks.map {
+        mapFromEntity(it)
+    }
 }

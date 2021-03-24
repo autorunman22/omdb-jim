@@ -9,7 +9,7 @@ interface OmdbService {
     suspend fun search(
         @Query("apikey") apiKey: String,
         @Query("y") year: String,
+        @Query("page") page: Int = 1,
         @Query("s") query: String,
-        @Query("page") page: Int
-    ): List<MovieNetwork>
+    ): OmdbResponse
 }

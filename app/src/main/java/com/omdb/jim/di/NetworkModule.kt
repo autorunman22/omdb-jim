@@ -5,6 +5,7 @@ import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.omdb.jim.network.OmdbService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,8 +39,14 @@ object NetworkModule {
             )
 
         return Retrofit.Builder()
-            .baseUrl("http://www.omdbapi.com")
+            .baseUrl("https://www.omdbapi.com/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(httpClient.build())
+    }
+
+    @Singleton
+    @Provides
+    fun providesOmdbService(retrofit: Retrofit.Builder): OmdbService {
+        return retrofit.build().create(OmdbService::class.java)
     }
 }

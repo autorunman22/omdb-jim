@@ -3,7 +3,7 @@ package com.omdb.jim.network
 import com.google.gson.annotations.SerializedName
 
 class MovieNetwork(
-    @SerializedName("imdbId")
+    @SerializedName("imdbID")
     val imdbId: String,
     @SerializedName("Title")
     val title: String,

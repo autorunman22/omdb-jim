@@ -1,5 +1,6 @@
 package com.omdb.jim.db
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -16,4 +17,10 @@ interface MovieDao {
 
     @Query("SELECT * from movies")
     fun movies(): List<MovieCache>
+
+    @Query("DELETE from movies")
+    suspend fun clearAll()
+
+    @Query("SELECT * from movies")
+    fun pagingSource(): PagingSource<Int, MovieCache>
 }
