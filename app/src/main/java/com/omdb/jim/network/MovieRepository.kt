@@ -15,6 +15,7 @@ class MovieRepository @Inject constructor(private val movieDao: MovieDao,
 
     suspend fun fetchMovieByImdbId(imdbId: String) = flow {
         emit(DataState.Loading)
+        kotlinx.coroutines.delay(2_000)
         try {
             val movieNetwork = omdbService.getMovie(imdbId)
 
