@@ -1,5 +1,5 @@
 # omdb-jim
-*(28/34) completed*
+*(29/34) completed*
 ## Task Details:
 - [x] Create an Android App showcasing the OMDb API s
 - [x] Applicant is expected to read the aforementioned API docs
@@ -20,7 +20,7 @@
 - [x] Material.io components
 - [x] Kotlin Coroutines
 - [x] Android Navigation Component
-- [ ] Lottie for animations
+- [x] Lottie for animations
 - [x] Retrofit for API calls
 - [x] Gson for serializing/deserializing
 - [ ] ProGuard should be enabled & code minified 
