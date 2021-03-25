@@ -1,5 +1,6 @@
 package com.omdb.jim.db
 
+import android.database.Cursor
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
@@ -23,4 +24,7 @@ interface MovieDao {
 
     @Query("SELECT * from movies")
     fun pagingSource(): PagingSource<Int, MovieCache>
+
+    @Query("SELECT m.*, m.imdbId as _id FROM movies m WHERE title LIKE :query")
+    fun getMoviesCursor(query: String): Cursor
 }

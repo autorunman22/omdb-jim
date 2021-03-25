@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.omdb.jim.ListFragment"
-        android:label="fragment_list"
+        android:label="OmDB Demo"
         tools:layout="@layout/fragment_list" />
 </navigation>
