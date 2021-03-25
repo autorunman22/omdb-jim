@@ -18,10 +18,11 @@ class MovieAdapter(private val onMovieClick: (Movie) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie = getItem(position) ?: return
+        val m = getItem(position) ?: return
         holder.binding.apply {
+            movie = m
             mcvParent.setOnClickListener {
-                onMovieClick.invoke(movie)
+                onMovieClick.invoke(m)
             }
         }
     }

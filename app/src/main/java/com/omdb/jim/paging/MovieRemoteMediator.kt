@@ -38,8 +38,8 @@ class MovieRemoteMediator @Inject constructor(
                     lastItem.imdbId
                 }
             }
-
-            val response = omdbService.search(BuildConfig.OMDB_API_KEY, "2020", loadKey?.toInt() ?: 23, "men")
+            Timber.d("computed loadKey: $loadKey")
+            val response = omdbService.search(BuildConfig.OMDB_API_KEY, "2020", loadKey?.toInt() ?: 33, "for")
             appDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {
                     movieDao.clearAll()
