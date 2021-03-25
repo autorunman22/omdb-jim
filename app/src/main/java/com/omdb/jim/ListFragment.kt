@@ -98,8 +98,11 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         // Get cursor from MovieDao
         lifecycleScope.launch {
-            val cursor = viewModel.getMoviesCursor(newText ?: "")
-            binding.searchView.suggestionsAdapter = MovieSuggestionAdapter(requireContext(), cursor)
+            val cursor = viewModel.getMoviesCursor(newText)
+            binding.searchView.suggestionsAdapter = MovieSuggestionAdapter(requireContext(), cursor) {
+                val action = ListFragmentDirections.actionListFragmentToMovieFragment(it.third, it.second, it.first)
+                findNavController().navigate(action)
+            }
         }
         return true
     }

@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.cursoradapter.widget.CursorAdapter
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import coil.load
 import com.omdb.jim.R
 
-class MovieSuggestionAdapter(context: Context, cursor: Cursor) :
+class MovieSuggestionAdapter(context: Context, cursor: Cursor,
+                             private val onMovieClicked: (Triple<String, String, String>) -> Unit) :
     CursorAdapter(context, cursor, false) {
 
     override fun newView(context: Context?, cursor: Cursor?, parent: ViewGroup?): View {
@@ -21,11 +23,17 @@ class MovieSuggestionAdapter(context: Context, cursor: Cursor) :
     override fun bindView(view: View?, context: Context?, cursor: Cursor?) {
         val title = cursor?.getString(cursor.getColumnIndexOrThrow("title"))
         val url = cursor?.getString(cursor.getColumnIndexOrThrow("poster_url"))
+        val imdbId = cursor?.getString(cursor.getColumnIndexOrThrow("imdbId"))
 
         val tvTitle = view?.findViewById(R.id.tv_title) as TextView
         tvTitle.text = title
 
         val ivPoster = view.findViewById(R.id.iv_poster) as ImageView
         ivPoster.load(url)
+
+        val viewGroup = view.findViewById(R.id.cl_parent_suggestion_item) as ConstraintLayout
+        viewGroup.setOnClickListener {
+            onMovieClicked.invoke(Triple(imdbId!!, title!!, url!!))
+        }
     }
 }
