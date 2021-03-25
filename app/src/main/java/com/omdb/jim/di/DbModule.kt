@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.omdb.jim.db.AppDatabase
 import com.omdb.jim.db.MovieDao
+import com.omdb.jim.db.MovieRemoteKeysDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,5 +28,11 @@ object DbModule {
     @Provides
     fun providesMovieDao(database: AppDatabase): MovieDao {
         return database.movieDao()
+    }
+
+    @Singleton
+    @Provides
+    fun providesRemoteKeys(database: AppDatabase): MovieRemoteKeysDao {
+        return database.remoteKeysDao()
     }
 }
