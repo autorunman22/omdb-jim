@@ -1,5 +1,5 @@
 # omdb-jim
-*(27/34) completed*
+*(28/34) completed*
 ## Task Details:
 - [x] Create an Android App showcasing the OMDb API s
 - [x] Applicant is expected to read the aforementioned API docs
@@ -37,5 +37,5 @@
 - [ ] Search results to be displayed in a separate view
 - [ ] Users should be able to filter the search results
 - [x] Store API responses via Room database to allow offline mode
-- [ ] Clicking on a card should open up a view where all available movie info is shown
+- [x] Clicking on a card should open up a view where all available movie info is shown
 - [x] App should check room database before making an API call to limit requests 
