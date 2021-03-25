@@ -9,5 +9,21 @@
         android:id="@+id/listFragment"
         android:name="com.omdb.jim.ListFragment"
         android:label="OmDB Demo"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_movieFragment"
+            app:destination="@id/movieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.omdb.jim.MovieFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_movie" >
+        <argument
+            android:name="poster_url"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -1,6 +1,7 @@
 package com.omdb.jim.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.omdb.jim.databinding.LayoutMovieItemBinding as Binding
 import com.omdb.jim.model.Movie
 
-class MovieAdapter(private val onMovieClick: (Movie) -> Unit) :
+class MovieAdapter(private val onMovieClick: (Movie, View) -> Unit) :
     PagingDataAdapter<Movie, MovieAdapter.MovieViewHolder>(COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -22,7 +23,7 @@ class MovieAdapter(private val onMovieClick: (Movie) -> Unit) :
         holder.binding.apply {
             movie = m
             mcvParent.setOnClickListener {
-                onMovieClick.invoke(m)
+                onMovieClick.invoke(m, it)
             }
         }
     }
