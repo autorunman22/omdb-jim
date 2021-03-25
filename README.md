@@ -1,5 +1,5 @@
 # omdb-jim
-*(23/34) completed*
+*(24/34) completed*
 ## Task Details:
 - [x] Create an Android App showcasing the OMDb API s
 - [x] Applicant is expected to read the aforementioned API docs
@@ -29,7 +29,7 @@
 - [x] Minimum Android version to support is Marshmallow
 - [x] Display a paginated home feed of movie cards
 - [x] Implement infinite scrolling with a limit of 10 movies per page
-- [ ] Implement swipe to refresh the home feed
+- [x] Implement swipe to refresh the home feed
 - [x] Order the list by newest movie
 - [ ] Users should be able to filter the feed
 - [ ] Users should be able to search for a movie in the action bar
