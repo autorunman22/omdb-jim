@@ -39,6 +39,11 @@ class ListFragment : Fragment() {
             vm = viewModel
             lifecycleOwner = this@ListFragment
 
+            swipeRefresh.isRefreshing = true
+            swipeRefresh.setOnRefreshListener {
+                movieAdapter.refresh()
+            }
+
             rvMovies.apply {
                 adapter = movieAdapter
                 layoutManager = LinearLayoutManager(context)
@@ -47,6 +52,9 @@ class ListFragment : Fragment() {
 
         lifecycleScope.launchWhenStarted {
             viewModel.movieListFlow.collect {
+
+                binding.swipeRefresh.isRefreshing = false
+
                 val movies = it.map { cache -> movieCacheMapper.mapFromEntity(cache) }
                 movieAdapter.submitData(movies)
             }
