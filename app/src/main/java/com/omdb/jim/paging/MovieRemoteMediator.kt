@@ -50,7 +50,7 @@ class MovieRemoteMediator @Inject constructor(
 
             Timber.d("computed loadKey: $loadKey")
 
-            val response = omdbService.search(BuildConfig.OMDB_API_KEY, "2020", loadKey ?: 1, "for")
+            val response = omdbService.search(BuildConfig.OMDB_API_KEY, "2020", loadKey, "for")
             val endOfPaginationReached = response.search.size < state.config.pageSize
 
             appDatabase.withTransaction {

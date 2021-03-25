@@ -10,6 +10,5 @@ fun imageViewBySrc(imageView: ImageView, url: String) {
     if (url == "N/A") imageView.load(R.drawable.sample_movie_poster)
     else imageView.load(url) {
         crossfade(true)
-        placeholder(R.drawable.sample_movie_poster)
     }
 }
