@@ -42,4 +42,8 @@ class MovieCacheMapper @Inject constructor() {
     fun mapToEntityList(models: List<Movie>): List<MovieCache> = models.map {
         mapToEntity(it)
     }
+
+    fun mapFromEntityList(caches: List<MovieCache>): List<Movie> = caches.map {
+        mapFromEntity(it)
+    }
 }

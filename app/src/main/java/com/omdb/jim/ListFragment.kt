@@ -89,6 +89,12 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         Timber.d("onQueryTextSubmit: $query")
+        query?.let {
+            // Navigate to search results fragment
+            val action = ListFragmentDirections.actionListFragmentToResultFragment(it)
+            findNavController().navigate(action)
+        }
+
         return true
     }
 
@@ -100,6 +106,8 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         lifecycleScope.launch {
             val cursor = viewModel.getMoviesCursor(newText)
             binding.searchView.suggestionsAdapter = MovieSuggestionAdapter(requireContext(), cursor) {
+
+                // Navigate to Movie detail fragment
                 val action = ListFragmentDirections.actionListFragmentToMovieFragment(it.third, it.second, it.first)
                 findNavController().navigate(action)
             }
