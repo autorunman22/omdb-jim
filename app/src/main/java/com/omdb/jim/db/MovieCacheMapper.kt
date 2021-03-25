@@ -12,6 +12,13 @@ class MovieCacheMapper @Inject constructor() {
             year = cache.year,
             posterUrl = cache.posterUrl,
             type = cache.type,
+            plot = cache.plot,
+            imdbRating = cache.imdbRating,
+            imdbVotes = cache.imdbVotes,
+            rated = cache.rated,
+            runtime = cache.runtime,
+            genre = cache.genre,
+            actors = cache.actors,
         )
     }
 
@@ -22,6 +29,13 @@ class MovieCacheMapper @Inject constructor() {
             year = model.year,
             posterUrl = model.posterUrl,
             type = model.type,
+            plot = model.plot,
+            imdbRating = model.imdbRating,
+            imdbVotes = model.imdbVotes,
+            rated = model.rated,
+            runtime = model.runtime,
+            genre = model.genre,
+            actors = model.actors,
         )
     }
 

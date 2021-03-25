@@ -50,9 +50,8 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     ): View {
 
         val movieAdapter = MovieAdapter() { movie, view ->
-
             val extras = FragmentNavigatorExtras(view to "shared_element_container")
-            val action = ListFragmentDirections.actionListFragmentToMovieFragment(movie.posterUrl, movie.title)
+            val action = ListFragmentDirections.actionListFragmentToMovieFragment(movie.posterUrl, movie.title, movie.imdbId)
 
             findNavController().navigate(action, extras)
         }

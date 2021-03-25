@@ -6,4 +6,11 @@ data class Movie(
     val year: String,
     val posterUrl: String,
     val type: String,
+    val plot: String = "",
+    val imdbRating: String = "",
+    val imdbVotes: String = "",
+    val rated: String = "",
+    val runtime: String = "",
+    val genre: String = "",
+    val actors: String = "",
 )

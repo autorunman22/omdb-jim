@@ -2,10 +2,7 @@ package com.omdb.jim.db
 
 import android.database.Cursor
 import androidx.paging.PagingSource
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface MovieDao {
@@ -13,11 +10,14 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(movieCaches: List<MovieCache>)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(movieCache: MovieCache)
+    @Update
+    suspend fun update(movieCache: MovieCache)
 
     @Query("SELECT * from movies")
     fun movies(): List<MovieCache>
+
+    @Query("SELECT * from movies WHERE imdbId = :imdbId")
+    fun movieByImdbId(imdbId: String): MovieCache?
 
     @Query("DELETE from movies")
     suspend fun clearAll()

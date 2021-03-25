@@ -25,5 +25,8 @@
         <argument
             android:name="title"
             app:argType="string" />
+        <argument
+            android:name="imdbId"
+            app:argType="string" />
     </fragment>
 </navigation>

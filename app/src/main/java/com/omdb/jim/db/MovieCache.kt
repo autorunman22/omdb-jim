@@ -17,4 +17,18 @@ class MovieCache(
     val posterUrl: String,
     @ColumnInfo(name = "type")
     val type: String,
+    @ColumnInfo(name = "plot")
+    val plot: String,
+    @ColumnInfo(name = "imdb_rating")
+    val imdbRating: String,
+    @ColumnInfo(name = "imdb_votes")
+    val imdbVotes: String,
+    @ColumnInfo(name = "rated")
+    val rated: String,
+    @ColumnInfo(name = "runtime")
+    val runtime: String,
+    @ColumnInfo(name = "genre")
+    val genre: String,
+    @ColumnInfo(name = "actors")
+    val actors: String,
 )

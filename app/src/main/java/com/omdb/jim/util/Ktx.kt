@@ -1,8 +1,10 @@
 package com.omdb.jim.util
 
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import coil.load
+import com.google.android.material.snackbar.Snackbar
 import com.omdb.jim.R
 
 @BindingAdapter("srcByUrl")
@@ -11,4 +13,8 @@ fun imageViewBySrc(imageView: ImageView, url: String) {
     else imageView.load(url) {
         crossfade(true)
     }
+}
+
+fun View.snack(message: String) {
+    Snackbar.make(this, message, Snackbar.LENGTH_SHORT).show()
 }
