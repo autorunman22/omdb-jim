@@ -13,9 +13,9 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.map
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.transition.Hold
-import com.google.android.material.transition.MaterialElevationScale
 import com.omdb.jim.databinding.FragmentListBinding
 import com.omdb.jim.db.MovieCacheMapper
+import com.omdb.jim.model.Movie
 import com.omdb.jim.ui.adapter.MovieAdapter
 import com.omdb.jim.ui.adapter.MovieSuggestionAdapter
 import com.omdb.jim.util.setupToolbar
@@ -33,30 +33,18 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     private val viewModel: ListViewModel by viewModels()
     private lateinit var binding: FragmentListBinding
 
+    @ExperimentalPagingApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        exitTransition = Hold()
-        reenterTransition = Hold()
-
         postponeEnterTransition()
-        view.doOnPreDraw { startPostponedEnterTransition() }
-    }
+        view.doOnPreDraw {
+            startPostponedEnterTransition() }
 
-    @ExperimentalPagingApi
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        val movieAdapter = MovieAdapter() { movie, view ->
-            val extras = FragmentNavigatorExtras(view to "shared_element_container")
-            val action = ListFragmentDirections.actionListFragmentToMovieFragment(movie.posterUrl, movie.title, movie.imdbId)
-
-            findNavController().navigate(action, extras)
+        val movieAdapter = MovieAdapter() { movie, v ->
+            onMovieClicked(movie, v)
         }
 
-        binding = FragmentListBinding.inflate(inflater).apply {
+        binding.apply {
             vm = viewModel
             lifecycleOwner = this@ListFragment
 
@@ -89,6 +77,13 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             }
         }
 
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -107,6 +102,15 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             binding.searchView.suggestionsAdapter = MovieSuggestionAdapter(requireContext(), cursor)
         }
         return true
+    }
+
+    private fun onMovieClicked(movie: Movie, v: View) {
+        exitTransition = Hold()
+        reenterTransition = Hold()
+        val extras = FragmentNavigatorExtras(v to "shared_element_container")
+        val action = ListFragmentDirections.actionListFragmentToMovieFragment(movie.posterUrl, movie.title, movie.imdbId)
+
+        findNavController().navigate(action, extras)
     }
 
 }
