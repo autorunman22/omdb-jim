@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.transition.Hold
 import com.omdb.jim.databinding.FragmentResultBinding
 import com.omdb.jim.model.Movie
+import com.omdb.jim.util.hideKeyboard
 import com.omdb.jim.util.setupToolbar
 import com.omdb.jim.vm.ResultViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,6 +43,8 @@ class ResultFragment : Fragment() {
         postponeEnterTransition()
         view.doOnPreDraw {
             startPostponedEnterTransition() }
+
+        hideKeyboard()
     }
 
     override fun onCreateView(
