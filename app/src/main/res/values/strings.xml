@@ -9,4 +9,9 @@
     <string name="plot">Plot</string>
     <string name="sample_results_for">Results for \'query\'</string>
     <string name="results_for">Results for \'%1$s\'</string>
+    <string-array name="type">
+        <item>All type</item>
+        <item>Movie</item>
+        <item>Series</item>
+    </string-array>
 </resources>

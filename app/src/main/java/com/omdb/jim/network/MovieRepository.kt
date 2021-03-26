@@ -44,5 +44,5 @@ class MovieRepository @Inject constructor(private val movieDao: MovieDao,
 
     }
 
-    fun getMoviesByQuery(q: String) = movieDao.getMoviesByQuery("%$q%")
+    fun getMoviesByQuery(q: String, type: String = "") = movieDao.getMoviesByQuery("%$q%", "%$type%")
 }

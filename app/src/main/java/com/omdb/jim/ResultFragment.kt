@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -17,6 +18,7 @@ import com.omdb.jim.model.Movie
 import com.omdb.jim.util.setupToolbar
 import com.omdb.jim.vm.ResultViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 interface OnResultTap {
     fun onTap(movie: Movie, v: View)
@@ -51,6 +53,21 @@ class ResultFragment : Fragment() {
             tvResultFor.text = getString(R.string.results_for, args.query)
             rvResults.apply {
                 layoutManager = LinearLayoutManager(context)
+            }
+
+            spinnerType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+                    when (pos) {
+                        0 -> viewModel.setType("")
+                        1 -> viewModel.setType("movie")
+                        2 -> viewModel.setType("series")
+                    }
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                    Timber.d("Nothing selected")
+                }
+
             }
         }
 

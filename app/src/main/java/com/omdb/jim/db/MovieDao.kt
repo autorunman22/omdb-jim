@@ -28,6 +28,6 @@ interface MovieDao {
     @Query("SELECT m.*, m.imdbId as _id FROM movies m WHERE title LIKE :query")
     fun getMoviesCursor(query: String): Cursor
 
-    @Query("SELECT * from movies WHERE title LIKE :q")
-    fun getMoviesByQuery(q: String): List<MovieCache>
+    @Query("SELECT * from movies WHERE title LIKE :q AND type LIKE :type")
+    fun getMoviesByQuery(q: String, type: String): List<MovieCache>
 }
