@@ -16,4 +16,7 @@ interface MovieRemoteKeysDao {
 
     @Query("DELETE from movieremotekeys")
     fun clearRemoteKeys()
+
+    @Query("SELECT * FROM movieremotekeys")
+    fun allKeys(): List<MovieRemoteKeys>
 }

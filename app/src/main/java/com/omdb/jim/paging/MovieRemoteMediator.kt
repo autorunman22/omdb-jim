@@ -51,7 +51,10 @@ class MovieRemoteMediator @Inject constructor(
                     return MediatorResult.Success(true)
                 }
                 LoadType.APPEND -> {
-                    val key = getRemoteKeysForLastItem(state)
+//                    val key = getRemoteKeysForLastItem(state)
+                    val key = appDatabase.withTransaction {
+                        remoteKeysDao.allKeys().lastOrNull()
+                    }
                     Timber.d("APPEND key: $key")
                     key?.nextKey ?: return MediatorResult.Success(true)
                 }
@@ -75,6 +78,7 @@ class MovieRemoteMediator @Inject constructor(
                 }
 
                 remoteKeysDao.insertAll(remoteKeys)
+                Timber.d("remoteKeys saved!")
 
                 val movies = movieNetMapper.mapFromEntityList(response.search)
                 movieDao.insertAll(movieCacheMapper.mapToEntityList(movies))
