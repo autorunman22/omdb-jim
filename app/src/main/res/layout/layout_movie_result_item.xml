@@ -4,9 +4,18 @@
         <variable
             name="movie"
             type="com.omdb.jim.model.Movie" />
+        <variable
+            name="vm"
+            type="com.omdb.jim.vm.ResultViewModel" />
+        <variable
+            name="tap"
+            type="com.omdb.jim.OnResultTap" />
+
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/cl_parent_suggestion_item"
+        android:transitionName="@{movie.imdbId + `_transition`}"
+        android:onClick="@{(v) -> tap.onTap(movie, v)}"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

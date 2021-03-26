@@ -2,12 +2,9 @@ package com.omdb.jim.vm
 
 import androidx.lifecycle.*
 import com.omdb.jim.db.MovieCacheMapper
-import com.omdb.jim.model.Movie
-import com.omdb.jim.network.DataState
 import com.omdb.jim.network.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
