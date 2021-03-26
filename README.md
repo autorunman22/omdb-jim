@@ -1,11 +1,11 @@
 # omdb-jim
-*(31/34) completed*
+
 ## Task Details:
 - [x] Create an Android App showcasing the OMDb API s
 - [x] Applicant is expected to read the aforementioned API docs
 - [x] Time limit is 1 week upon receipt of exam
 - [x] Applicant can submit whatever’s finished within the allotted time
-- [ ] Finish & submit the source code along with an APK within the allotted time
+- [x] Finish & submit the source code along with an APK within the allotted time
 - [x] UI/UX & assets are up to you
 - [x] Failure to read, understand, and follow the instructions defaults the applicant 
 
@@ -23,7 +23,7 @@
 - [x] Lottie for animations
 - [x] Retrofit for API calls
 - [x] Gson for serializing/deserializing
-- [ ] ProGuard should be enabled & code minified 
+- [x] ProGuard should be enabled & code minified 
 
 ## Mandatory Requirements:
 - [x] Minimum Android version to support is Marshmallow
