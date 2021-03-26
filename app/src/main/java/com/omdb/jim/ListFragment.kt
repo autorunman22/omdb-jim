@@ -4,19 +4,23 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.doOnPreDraw
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.paging.ExperimentalPagingApi
+import androidx.paging.LoadState
 import androidx.paging.map
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.Hold
 import com.omdb.jim.databinding.FragmentListBinding
 import com.omdb.jim.db.MovieCacheMapper
 import com.omdb.jim.model.Movie
 import com.omdb.jim.ui.adapter.MovieAdapter
+import com.omdb.jim.ui.adapter.MovieLoadStateAdapter
 import com.omdb.jim.ui.adapter.MovieSuggestionAdapter
 import com.omdb.jim.util.setupToolbar
 import com.omdb.jim.vm.ListViewModel
@@ -42,6 +46,11 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         val movieAdapter = MovieAdapter() { movie, v ->
             onMovieClicked(movie, v)
+        }.apply {
+            withLoadStateHeaderAndFooter(
+                header = MovieLoadStateAdapter(::retry),
+                footer = MovieLoadStateAdapter(::retry)
+            )
         }
 
         binding.apply {
@@ -65,6 +74,10 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                 adapter = movieAdapter
                 layoutManager = LinearLayoutManager(context)
             }
+
+            btnRetry.setOnClickListener {
+                movieAdapter.retry()
+            }
         }
 
         lifecycleScope.launchWhenStarted {
@@ -76,6 +89,22 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                 movieAdapter.submitData(movies)
             }
         }
+
+        lifecycleScope.launchWhenStarted {
+            movieAdapter.loadStateFlow.collect {
+                binding.loader.isVisible = it.mediator?.append is LoadState.Loading
+
+                val append = it.mediator?.append
+                if (append is LoadState.Error) {
+                    binding.btnRetry.isVisible = it.mediator?.append is LoadState.Error
+                    Snackbar.make(binding.root, append.error.localizedMessage!!, Snackbar.LENGTH_LONG)
+                        .show()
+                } else {
+                    binding.btnRetry.isVisible = false
+                }
+            }
+        }
+
 
     }
 

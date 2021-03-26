@@ -92,7 +92,7 @@ dependencies {
     implementation "androidx.room:room-ktx:2.3.0-beta03"
 
     // Chucker
-    debugImplementation "com.github.chuckerteam.chucker:library:3.4.0"
+    implementation "com.github.chuckerteam.chucker:library:3.4.0"
 
     // StateFlow & SharedFlow testing
     testImplementation 'app.cash.turbine:turbine:0.4.1'
