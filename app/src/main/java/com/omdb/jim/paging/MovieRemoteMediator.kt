@@ -12,6 +12,8 @@ import com.omdb.jim.db.MovieCacheMapper
 import com.omdb.jim.db.MovieRemoteKeys
 import com.omdb.jim.network.MovieNetMapper
 import com.omdb.jim.network.OmdbService
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -25,6 +27,13 @@ class MovieRemoteMediator @Inject constructor(
 
     private val movieDao = appDatabase.movieDao()
     private val remoteKeysDao = appDatabase.remoteKeysDao()
+
+    override suspend fun initialize(): InitializeAction = withContext(Dispatchers.IO) {
+        val movies = movieDao.movies()
+        if (movies.isEmpty()) return@withContext InitializeAction.LAUNCH_INITIAL_REFRESH
+        // We will assume that cache data is fresh all the time
+        else return@withContext InitializeAction.SKIP_INITIAL_REFRESH
+    }
 
     override suspend fun load(
         loadType: LoadType,
